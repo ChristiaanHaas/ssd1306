@@ -25,12 +25,12 @@
 #include "font6x8.h"
 #include "ssd1306.h"
 
-#ifndef min
-#define min(x,y) ((x)<(y)?(x):(y))
+#ifndef SSD_MIN
+#define SSD_min(x,y) ((x)<(y)?(x):(y))
 #endif
 
-#ifndef max
-#define max(x,y) ((x)>(y)?(x):(y))
+#ifndef SSD_MAX
+#define SSD_max(x,y) ((x)>(y)?(x):(y))
 #endif
 
 extern SFixedFontInfo s_fixedFont;
@@ -127,7 +127,7 @@ void ssd1306_showMenu(SAppMenu *menu)
 {
     ssd1306_drawRect(4, 4, ssd1306_displayWidth() - 5, ssd1306_displayHeight() - 5);
     menu->scrollPosition = calculateScrollPosition( menu, menu->selection );
-    for (uint8_t i = menu->scrollPosition; i < min(menu->count, menu->scrollPosition + getMaxScreenItems()); i++)
+    for (uint8_t i = menu->scrollPosition; i < SSD_min(menu->count, menu->scrollPosition + getMaxScreenItems()); i++)
     {
         drawMenuItem(menu, i);
     }
@@ -138,7 +138,7 @@ void ssd1306_showMenu8(SAppMenu *menu)
 {
     ssd1306_drawRect8(4, 4, ssd1306_displayWidth() - 5, ssd1306_displayHeight() - 5);
     menu->scrollPosition = calculateScrollPosition8( menu, menu->selection );
-    for (uint8_t i = menu->scrollPosition; i < min(menu->count, menu->scrollPosition + getMaxScreenItems8()); i++)
+    for (uint8_t i = menu->scrollPosition; i < SSD_min(menu->count, menu->scrollPosition + getMaxScreenItems8()); i++)
     {
         drawMenuItem8(menu, i);
     }
@@ -149,7 +149,7 @@ void ssd1306_showMenu16(SAppMenu *menu)
 {
     ssd1306_drawRect16(4, 4, ssd1306_displayWidth() - 5, ssd1306_displayHeight() - 5);
     menu->scrollPosition = calculateScrollPosition8( menu, menu->selection );
-    for (uint8_t i = menu->scrollPosition; i < min(menu->count, menu->scrollPosition + getMaxScreenItems8()); i++)
+    for (uint8_t i = menu->scrollPosition; i < SSD_min(menu->count, menu->scrollPosition + getMaxScreenItems8()); i++)
     {
         drawMenuItem16(menu, i);
     }

@@ -184,7 +184,7 @@ void drawIntro()
 void drawStatusPanel()
 {
     ssd1306_setColor(RGB_COLOR8(255,0,0));
-    for(uint8_t i=0; i<min(hearts,3); i++)
+    for(uint8_t i=0; i<SSD_min(hearts,3); i++)
     {
         SPRITE heart = ssd1306_createSprite( RIGHT_EDGE + 4, 16 + (i<<3), 8, heartSprite );
         heart.draw();
@@ -590,7 +590,7 @@ void movePlatform()
     uint8_t buttonCode = getPressedButton(0);
     if (buttonCode == BUTTON_RIGHT)
     {
-        platformPos = min(RIGHT_EDGE - LEFT_EDGE - 1 - platformWidth, platformPos + PLATFORM_SPEED);
+        platformPos = SSD_min(RIGHT_EDGE - LEFT_EDGE - 1 - platformWidth, platformPos + PLATFORM_SPEED);
     }
     if (buttonCode == BUTTON_LEFT)
     {

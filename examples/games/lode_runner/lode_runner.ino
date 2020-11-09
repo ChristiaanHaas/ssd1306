@@ -122,10 +122,10 @@ static bool onDraw()
         engine.worldCoordinates();
         NanoRect blocks = rect_to_blocks( engine.canvas.rect() );
         for (uint8_t row = max(0,blocks.p1.y);
-                     row <= min(13,blocks.p2.y); row++)
+                     row <= SSD_min(13,blocks.p2.y); row++)
         {
             for (uint8_t col = max(0,blocks.p1.x);
-                         col <= min(23,blocks.p2.x); col++)
+                         col <= SSD_min(23,blocks.p2.x); col++)
             {
                 uint8_t blockType = block_value({col,row});
                 if (blockType != 0)
@@ -153,7 +153,7 @@ static NanoPoint calc_new_screen_position()
     NanoPoint position = engine.getPosition() + game_window.p1;
     if (player.x() - position.x >= game_window.width() - 24)
     {
-        position.x = min(player.x() - (game_window.width() - 24), 128);
+        position.x = SSD_min(player.x() - (game_window.width() - 24), 128);
     }
     else if (player.x() - position.x < 24)
     {
@@ -161,7 +161,7 @@ static NanoPoint calc_new_screen_position()
     }
     if (player.y() - position.y >= game_window.height() - 24)
     {
-        position.y = min(player.y() - (game_window.height() - 24), 64);
+        position.y = SSD_min(player.y() - (game_window.height() - 24), 64);
     }
     else if (player.y() - position.y < 24)
     {
