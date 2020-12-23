@@ -198,9 +198,9 @@ void    ssd1306_128x64_i2c_init()
     ssd1306_128x64_init();
 }
 
-void    ssd1306_128x64_i2c_initEx(int8_t scl, int8_t sda, int8_t sa)
+void    ssd1306_128x64_i2c_initEx(uint8_t i2c_num, int8_t scl, int8_t sda, int8_t sa)
 {
-    ssd1306_i2cInitEx(scl, sda, sa);
+    ssd1306_i2cInitEx(i2c_num, scl, sda, sa);
     ssd1306_128x64_init();
 }
 

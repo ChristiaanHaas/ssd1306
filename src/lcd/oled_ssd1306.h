@@ -75,7 +75,7 @@ void         ssd1306_128x64_i2c_init(void);
  *
  * @note scl and sda for Linux systems should be the same, and should contain i2c bus id.
  */
-void         ssd1306_128x64_i2c_initEx(int8_t scl, int8_t sda, int8_t sa);
+void         ssd1306_128x64_i2c_initEx(uint8_t i2c_num, int8_t scl, int8_t sda, int8_t sa);
 
 /**
  * @brief Inits 128x64 OLED display over spi (based on SSD1306 controller).

@@ -76,7 +76,7 @@ void         ssd1306_i2cInit(void);
  *
  * @note: after call to this function you need to initialize lcd display.
  */
-void ssd1306_i2cInitEx(int8_t scl, int8_t sda, int8_t sa);
+void ssd1306_i2cInitEx(int8_t i2c_num, int8_t scl, int8_t sda, int8_t sa);
 
 #ifdef __cplusplus
 }

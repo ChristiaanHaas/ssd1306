@@ -156,7 +156,7 @@ static void platform_i2c_send_buffer(const uint8_t *data, uint16_t len) {
 //    i2c_master_write(cmd, data_wr, size, ACK_CHECK_EN);
 }
 
-void ssd1306_platform_i2cInit(int8_t busId, uint8_t addr, ssd1306_platform_i2cConfig_t *cfg) {
+void ssd1306_platform_i2cInit(int8_t i2c_num, uint8_t addr, ssd1306_platform_i2cConfig_t *cfg) {
   if (addr) s_i2c_addr = addr;
   ssd1306_intf.spi = 0;
   ssd1306_intf.start = &platform_i2c_start;
@@ -167,7 +167,7 @@ void ssd1306_platform_i2cInit(int8_t busId, uint8_t addr, ssd1306_platform_i2cCo
 
 #ifdef CONFIG_USE_I2CDEV_LIB
   memset(&dev, 0, sizeof(i2c_dev_t));
-  dev.port = 0;
+  dev.port = i2c_num;
   dev.addr = s_i2c_addr;
   dev.cfg.mode = I2C_MODE_MASTER;
   dev.cfg.sda_io_num = cfg->sda >= 0 ? cfg->sda : 21;;
@@ -178,8 +178,8 @@ void ssd1306_platform_i2cInit(int8_t busId, uint8_t addr, ssd1306_platform_i2cCo
   i2c_dev_create_mutex(&dev);
 #endif
   // init your interface here
-  if ( busId < 0) busId = I2C_NUM_0;
-  s_bus_id = busId;
+  if ( i2c_num < 0) i2c_num = I2C_NUM_0;
+  s_bus_id = i2c_num;
   i2c_config_t conf;
   conf.mode = I2C_MODE_MASTER;
   conf.sda_io_num = cfg->sda >= 0 ? cfg->sda : 21;
