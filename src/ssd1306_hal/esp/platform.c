@@ -136,7 +136,7 @@ void ssd1306_platform_i2cInit(int8_t busId, uint8_t addr, ssd1306_platform_i2cCo
     ssd1306_intf.close = &platform_i2c_close;
     ssd1306_intf.send_buffer = &platform_i2c_send_buffer;
     // init your interface here
-    if ( busId < 0) busId = I2C_NUM_1;
+    if ( busId < 0) busId = I2C_NUM_0;
     s_bus_id = busId;
     i2c_config_t conf;
     conf.mode = I2C_MODE_MASTER;
